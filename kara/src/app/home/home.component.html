@@ -1,0 +1,12 @@
+<div class="menu">
+  <button type="button" class="btn nes-btn is-success" [routerLink]="['create']">Create a new song</button>
+  <button class="btn nes-btn" [routerLink]="['list']">List Song</button>
+  <button type="button" class="btn nes-btn is-primary" (click)="getRandomSong()">Random</button>
+</div>
+
+<div class="current-song nes-container is-rounded is-dark" [routerLink]="[currentSong?._id]">
+  <h3>{{ currentSong?.title }}</h3>
+  <p>{{ currentSong?.artist }}</p>
+</div>
+
+<router-outlet></router-outlet>

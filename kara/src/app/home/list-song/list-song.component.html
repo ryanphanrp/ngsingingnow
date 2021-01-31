@@ -1,0 +1,13 @@
+<div class="songs nes-container is-centered">
+  <div *ngFor="let song of listSong$ | async"
+       class="song nes-container is-rounded">
+    <div class="left" [routerLink]="['../', song._id]">
+      <h2 class="title">{{ song.title }}</h2>
+    </div>
+    <div class="right">
+      <button class="btn nes-btn is-warning" type="button" [routerLink]="['../', song._id, 'update']">Update</button>
+      <button class="btn nes-btn is-error" type="button" (click)="deleteThisSong(song._id)">Delete</button>
+    </div>
+
+  </div>
+</div>

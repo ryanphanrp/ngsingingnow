@@ -1,0 +1,17 @@
+<div class="nes-container with-title is-centered">
+  <p class="title">Detail of Song</p>
+  <h2 class="title-song">{{ currentSong?.title }}</h2>
+  <h4 class="artist-song">{{ currentSong?.artist }}</h4>
+
+  <div class="lyric-song">
+    <button (click)="showLyric()" *ngIf="!isShowLyric"
+            class="btn-show-lyric nes-btn is-primary" type="button">Show Lyric</button>
+    <button [routerLink]="['../', currentSong?._id, 'update']" *ngIf="!isShowLyric"
+            class="btn-show-lyric nes-btn is-warning" type="button">Update</button>
+
+    <div *ngIf="isShowLyric" class="nes-container with-title" (click)="showLyric()">
+      <p class="title">Lyric</p>
+      <p>{{ currentSong?.lyric }}</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+.btn-paste {
+  margin: 0;
+  padding: 3px;
+}
+
+.text-area-block {
+  position: relative;
+}
+
+.text-area-block textarea {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 3px;
+}
+
+.text-area-block button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}

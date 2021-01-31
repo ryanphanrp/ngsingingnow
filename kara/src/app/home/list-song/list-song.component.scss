@@ -1,0 +1,65 @@
+// list song
+.songs {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// single song
+.song {
+  width: 70%;
+  margin-bottom: 20px;
+  padding: 5px 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/** Left */
+.left {
+  width: 70%;
+  display: flex;
+  align-items: center;
+}
+
+.artist {
+  color: crimson;
+}
+/** Right */
+.right {
+  width: 30%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/** Button */
+.btn {
+  margin: 0 7px;
+}
+
+/**
+  Mobile
+ */
+@media only screen and (max-width: 600px) {
+  .song {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .right {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .left {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .artist {
+    display: none;
+  }
+}
