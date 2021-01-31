@@ -48,11 +48,10 @@ export class UpdateSongComponent implements OnInit {
   }
 
   submit(): void {
-    console.log(this.songForm.value);
     this.songService.updateSong(this.currentSong._id, this.songForm.value).subscribe(
       next => {
         console.log('Success!');
-        this.router.navigate(['list']);
+        this.router.navigate(['../'], {relativeTo: this.activatedRoute});
       }
     );
   }

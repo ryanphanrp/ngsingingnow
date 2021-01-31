@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {SongService} from '../../_services/song.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-song',
@@ -15,7 +15,8 @@ export class CreateSongComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private songService: SongService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
   }
 
@@ -30,7 +31,8 @@ export class CreateSongComponent implements OnInit {
   submit(): void {
     this.songService.createSong(this.songForm.value).subscribe(
       next => {
-        this.router.navigate(['list']);
+        console.log('Success!');
+        this.router.navigate(['../list'], {relativeTo: this.activatedRoute});
       }
     );
   }
