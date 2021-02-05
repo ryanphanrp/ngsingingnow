@@ -9,7 +9,7 @@
     <button [routerLink]="['../', currentSong?._id, 'update']" *ngIf="!isShowLyric"
             class="btn-show-lyric nes-btn is-warning" type="button">Update</button>
 
-    <div *ngIf="isShowLyric" class="nes-container with-title" (click)="showLyric()">
+    <div *ngIf="isShowLyric" class="lyric nes-container with-title" (click)="showLyric()">
       <p class="title">Lyric</p>
       <p style="white-space: pre-line">{{ currentSong?.lyric }}</p>
     </div>

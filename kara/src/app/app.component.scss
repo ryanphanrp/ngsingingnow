@@ -8,3 +8,22 @@
 .brand {
   margin-left: 10px;
 }
+
+.home-container {
+  display: flex;
+  justify-content: center;
+}
+
+.block-router-outlet {
+  width: 70%;
+}
+
+/**
+  Mobile
+ */
+@media only screen and (max-width: 600px) {
+  .block-router-outlet {
+    width: 100%;
+  }
+}
+

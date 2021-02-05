@@ -4,6 +4,7 @@ import {SongService} from '../../_services/song.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {map, switchMap} from 'rxjs/operators';
 import {ISong} from '../../_shared/interface/song';
+import {HotToastService} from '@ngneat/hot-toast';
 
 @Component({
   selector: 'app-update-song',
@@ -19,11 +20,13 @@ export class UpdateSongComponent implements OnInit {
     private fb: FormBuilder,
     private songService: SongService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toast: HotToastService
   ) {
     this.songForm = this.fb.group({
       title: ['', [Validators.required]],
       artist: ['', [Validators.required]],
+      emotion: ['', [Validators.required]],
       lyric: ['']
     });
   }
@@ -38,6 +41,7 @@ export class UpdateSongComponent implements OnInit {
         this.songForm.patchValue({
           title: this.currentSong.title,
           artist: this.currentSong.artist,
+          emotion: this.currentSong.emotion,
           lyric: this.currentSong.lyric
         });
       },
@@ -50,8 +54,11 @@ export class UpdateSongComponent implements OnInit {
   submit(): void {
     this.songService.updateSong(this.currentSong._id, this.songForm.value).subscribe(
       next => {
-        console.log('Success!');
+        this.toast.success(next.message);
         this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+      },
+      error => {
+        this.toast.error(error.error.message);
       }
     );
   }

@@ -3,6 +3,10 @@
   padding: 3px;
 }
 
+.btn-submit {
+  margin: 10px 0;
+}
+
 .text-area-block {
   position: relative;
 }
@@ -18,4 +22,13 @@
   position: absolute;
   bottom: 0;
   right: 0;
+}
+
+.emotion {
+  display: flex;
+  margin-top: 1em;
+}
+
+.title-emotion {
+  margin-right: 1em;
 }

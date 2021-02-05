@@ -13,16 +13,31 @@
       <input class="nes-input" formControlName="artist" id="artist" type="text">
     </div>
 
+<!--    Emotion Selection-->
+    <div class="emotion nes-field">
+      <p class="title-emotion">Emotion:</p>
+      <label>
+        <input class="nes-radio" type="radio" value="happy" checked formControlName="emotion">
+        <span>Happy</span>
+      </label>
+      <label>
+        <input class="nes-radio" type="radio" value="sad" formControlName="emotion">
+        <span>Sad</span>
+      </label>
+    </div>
+
+
     <!--  Lyric Input-->
     <div class="text-area-block">
       <label for="lyric">Lyric</label>
       <textarea class="nes-textarea" formControlName="lyric" id="lyric"></textarea>
-      <button class="btn-paste nes-btn" type="button" (click)="copyFromClipBoard()">Paste</button>
+      <button (click)="copyFromClipBoard()" class="btn-paste nes-btn" type="button">Paste</button>
 
     </div>
 
     <!--  Submit-->
-    <button class="btn-submit nes-btn is-primary" [disabled]="!songForm.valid" type="submit">Submit</button>
+    <button [disabled]="!songForm.valid"
+            class="btn-submit nes-btn {{ !songForm.valid ? 'is-disabled' : 'is-primary' }}" type="submit">Submit</button>
   </form>
 </div>
 

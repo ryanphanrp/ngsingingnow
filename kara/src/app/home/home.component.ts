@@ -9,6 +9,8 @@ import {ISong} from '../_shared/interface/song';
 })
 export class HomeComponent implements OnInit {
   currentSong: ISong;
+  emotions = ['All', 'happy', 'sad'];
+  currentEmotion: string;
 
   constructor(private songService: SongService) {
   }
@@ -23,6 +25,10 @@ export class HomeComponent implements OnInit {
         this.currentSong = next;
       }
     );
+  }
+
+  updateListSong(): void {
+    this.getRandomSong();
   }
 
 }

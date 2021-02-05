@@ -33,6 +33,7 @@ export class SongService {
     return this.http.post(API, {
       title: payload.title,
       artist: payload.artist,
+      emotion: payload.emotion,
       lyric: payload.lyric
     }, httpOptions).pipe(delay(50));
   }
@@ -41,6 +42,7 @@ export class SongService {
     return this.http.put(API + '/' + id, {
       title: payload.title,
       artist: payload.artist,
+      emotion: payload.emotion,
       lyric: payload.lyric
     }, httpOptions).pipe(delay(50));
   }

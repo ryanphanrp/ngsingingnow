@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {SongService} from '../../_services/song.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {HotToastService} from '@ngneat/hot-toast';
 
 @Component({
   selector: 'app-create-song',
@@ -16,7 +17,8 @@ export class CreateSongComponent implements OnInit {
     private fb: FormBuilder,
     private songService: SongService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private toast: HotToastService
   ) {
   }
 
@@ -24,6 +26,7 @@ export class CreateSongComponent implements OnInit {
     this.songForm = this.fb.group({
       title: ['', [Validators.required]],
       artist: ['', [Validators.required]],
+      emotion: ['', [Validators.required]],
       lyric: ['']
     });
   }
@@ -31,8 +34,11 @@ export class CreateSongComponent implements OnInit {
   submit(): void {
     this.songService.createSong(this.songForm.value).subscribe(
       next => {
-        console.log('Success!');
+        this.toast.success(next.message);
         this.router.navigate(['../list'], {relativeTo: this.activatedRoute});
+      },
+      error => {
+        this.toast.error(error.error.message);
       }
     );
   }

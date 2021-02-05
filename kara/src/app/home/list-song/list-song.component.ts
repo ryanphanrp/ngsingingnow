@@ -1,7 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {ISong} from '../../_shared/interface/song';
 import {SongService} from '../../_services/song.service';
+import {map} from 'rxjs/operators';
+import {ActivatedRoute} from '@angular/router';
+import {HotToastService} from '@ngneat/hot-toast';
+import {DOCUMENT} from '@angular/common';
 
 @Component({
   selector: 'app-list-song',
@@ -11,11 +15,35 @@ import {SongService} from '../../_services/song.service';
 export class ListSongComponent implements OnInit {
   listSong$: Observable<ISong[]>;
 
-  constructor(private songService: SongService) {
+  constructor(
+    private route: ActivatedRoute,
+    private songService: SongService,
+    @Inject(DOCUMENT) document) {
   }
 
   ngOnInit(): void {
+    this.route
+      .queryParams
+      .subscribe(
+        next => {
+          if (next.emotion) {
+            console.log(next.emotion);
+            this.getListSongByEmotion(next.emotion);
+          } else {
+            this.getListSong();
+          }
+        }
+      );
+  }
+
+  getListSong(): void {
     this.listSong$ = this.songService.getSongs();
+  }
+
+  getListSongByEmotion(emotion: string): void {
+    this.listSong$ = this.songService.getSongs().pipe(map(songs =>
+      songs.filter(song => song.emotion === emotion)
+    ));
   }
 
 
@@ -26,5 +54,17 @@ export class ListSongComponent implements OnInit {
         this.listSong$ = this.songService.getSongs();
       }
     );
+  }
+
+  /**
+   *  Modal
+   */
+  showModal(id: string): void {
+    document.getElementById(id).style.display = 'block';
+    console.log(document.getElementById(id).innerText);
+  }
+
+  hideModal(id: string): void {
+    document.getElementById(id).style.display = 'none';
   }
 }
