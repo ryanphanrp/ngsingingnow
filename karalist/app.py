@@ -105,8 +105,6 @@ def get_a_song(song_id):
 def update_a_song(song_id):
     query = {'_id': ObjectId(song_id)}
     request_data = json.loads(request.data)
-    if check_title(request_data['title']):
-        return res_message("This title had been existed.", 400)
     data = {
         'title': request_data['title'],
         'artist': request_data['artist'],
