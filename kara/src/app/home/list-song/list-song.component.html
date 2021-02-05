@@ -6,7 +6,7 @@
     </div>
     <div class="right">
       <button [routerLink]="['../', song._id, 'update']" class="btn nes-btn is-warning" type="button">Update</button>
-      <button (click)="showModal(song._id)" class="nes-btn is-primary" type="button">
+      <button (click)="showModal(song._id)" class="btn nes-btn is-error" type="button">
         Delete
       </button>
 
@@ -17,7 +17,7 @@
             <p>Do you really want to delete this song?</p>
             <menu class="menu-modal">
               <button (click)="hideModal(song._id)" class="btn-menu nes-btn">Cancel</button>
-              <button (click)="deleteThisSong(song._id)" class="btn-menu nes-btn is-primary">Confirm</button>
+              <button (click)="deleteThisSong(song._id)" class="btn-menu nes-btn is-error">Confirm</button>
             </menu>
           </div>
 
