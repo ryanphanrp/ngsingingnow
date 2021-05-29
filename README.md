@@ -1,6 +1,9 @@
 # favor-song
 Flask RestfullAPI and Angular
 
+## Tech
+Sử dụng Python Flask lưu dữ liệu trên mongoDB và sử dụng client bằng Angular
+
 ## Screenshots
 Trên điện thoại
 * Giao diện ban đầu hiển thị ngẩu nhiên một bài hát bất kể thể loại
@@ -15,6 +18,7 @@ Trên điện thoại
 * Thêm một bài hát mới
 
 ![Alt text](./screenshot/4.PNG)
+
 
 ## Deploy:
 https://ngsingingnow.web.app/songs
