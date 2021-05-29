@@ -127,7 +127,9 @@ def delete_a_song(song_id):
     }
     return Response(json.dumps(response_message), status=200, mimetype='application/json')
 
-
+'''
+Main
+'''
 if __name__ == '__main__':
     # for deployment
     # to make it work for both production and development
