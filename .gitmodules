@@ -1,0 +1,6 @@
+[submodule "ngsingingnow_angular_fe"]
+	path = ngsingingnow_angular_fe
+	url = git@github.com:jucnibie/ngsingingnow_angular_fe.git
+[submodule "ngsingingnow_flask_be"]
+	path = ngsingingnow_flask_be
+	url = git@github.com:jucnibie/ngsingingnow_flask_be.git
